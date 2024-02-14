@@ -1,10 +1,14 @@
 from tkinter import *
 from tkinter import messagebox
+import secrets
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
 def generate_password():
-    pass
+    password_length = 12
+    password = secrets.token_urlsafe(password_length)
+    password_entry.delete(0, END)
+    password_entry.insert(0, password)
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 
@@ -31,13 +35,13 @@ def add_password():
 # Create the main window
 window = Tk()
 window.title("Password Manager")
-window.config(bg="#f0f0f0", padx=20, pady=20)  # Added background color and padding
+window.config(bg="#f0f0f0", padx=20, pady=20)
 
 # Create and place the logo
 canvas = Canvas(window, height=200, width=200, bg="#f0f0f0", highlightthickness=0)
 logo_img = PhotoImage(file="logo.png")
 canvas.create_image(100, 100, image=logo_img)
-canvas.grid(row=0, column=0, columnspan=3, pady=10)  # Adjusted columnspan and added padding
+canvas.grid(row=0, column=0, columnspan=3, pady=10)
 
 # Labels
 labels = ["Website:", "Email/Username:", "Password:"]
